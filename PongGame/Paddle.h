@@ -5,6 +5,7 @@
 class TPaddle {
 public:
     TVector2 pos, vec;
+    int iWidth;
 public:
     TPaddle();
     TPaddle(TVector2 pos, int width, char znak);
@@ -14,7 +15,6 @@ public:
     void ReadingWallInfo(std::vector<TWall>& wls);
 
 private:
-    int iWidth;
     char cZnak;
     enum class eControls : int {
         LEFT = VK_LEFT,
