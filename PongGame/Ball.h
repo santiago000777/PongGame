@@ -10,7 +10,7 @@ class TBall :
 public:
     TVector2 vec;
 public:
-    void NacteniPrekazek(const TPaddle& paddle, const std::vector<TWall>& walls);
+    void NacteniPrekazek(TPaddle& paddle, std::vector<TWall>& walls);
     void Frame();
 private:
     enum eKontrolniBody : int {
@@ -21,7 +21,7 @@ private:
 
     TVector2 kontrolniBody[3];
 
-    struct TPadlleInfo {
+    /*struct TPadlleInfo {
         TVector2 pos;
         int width;
     } paddleInfo;
@@ -29,8 +29,8 @@ private:
     struct TWallInfo {
         TVector2 pos, size;
     };
-    std::vector<TWallInfo> wallsInfo;
-
+    std::vector<TWallInfo> wallsInfo;*/
+    std::vector<TBox&> prekazky;
 
 private:
     void NastaveniKontrolnichBodu();

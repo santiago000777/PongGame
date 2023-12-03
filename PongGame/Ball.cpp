@@ -1,16 +1,26 @@
 #include "Ball.h"
 
-void TBall::NacteniPrekazek(const TPaddle& paddle, const std::vector<TWall>& walls) {
-	paddleInfo.pos = paddle.pos;
+void TBall::NacteniPrekazek(TPaddle& paddle, std::vector<TWall>& walls) {
+	/*paddleInfo.pos = paddle.pos;
 	paddleInfo.width = paddle.iWidth;
 
 	for (int i = 0; i < walls.size(); i++) {
 		wallsInfo.at(i).pos = walls.at(i).boxes.at(0).pos;
 		wallsInfo.at(i).size = walls.at(i).size;
+	}*/
+
+	for (int k = 0; k < walls.size(); k++) {
+		for (int i = 0; i < walls.at(k).boxes.size(); i++) {
+			prekazky.push_back(walls.at(k).boxes.at(i));
+		}
+	}
+	for (int i = 0; i < paddle.vBoxes.size(); i++) {
+		prekazky.push_back(paddle.vBoxes.at(i));
 	}
 }
 
 void TBall::Frame() {
+
 	Print();
 	NastaveniKontrolnichBodu();
 	Posun();
@@ -23,15 +33,20 @@ void TBall::NastaveniKontrolnichBodu() {
 }
 
 void TBall::Posun() {
-	if () {	
+	for (int i = 0; i < prekazky.size(); i++) {
+		if (round(kontrolniBody[XSIDE].x) == prekazky.at(i).pos.x 
+			&& round(kontrolniBody[XSIDE].y) == prekazky.at(i).pos.y) {
+			vec.x *= -1;
+		}
+		if (round(kontrolniBody[YSIDE].x) == prekazky.at(i).pos.x 
+			&& round(kontrolniBody[YSIDE].y) == prekazky.at(i).pos.y) {
+			vec.y *= -1;
+		}
+		//if (kontrolniBody[CORNERSIDE].) {			// roh
 
+		//}
 	}
-	else if () {
-
-	}
-	if () {			// roh
-
-	}
+	
 
 	pos += vec;
 }

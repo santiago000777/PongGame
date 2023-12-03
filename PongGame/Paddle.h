@@ -6,6 +6,7 @@ class TPaddle {
 public:
     TVector2 pos, vec;
     int iWidth;
+    std::vector<TBox> vBoxes;
 public:
     TPaddle();
     TPaddle(TVector2 pos, int width, char znak);
@@ -21,7 +22,6 @@ private:
         STAY = 0,
         RIGHT = VK_RIGHT
     } controls;
-    std::vector<TBox> vBoxes;
 
     struct TWallsInfo {
         TVector2 topLeftC, topRightC;
@@ -33,5 +33,6 @@ private:
     void Print();
     void Smaz();
     void Posun();
+
 };
 
