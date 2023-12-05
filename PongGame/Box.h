@@ -11,6 +11,7 @@ public:
 	TBox(TVector2 pos, char znak);
 	TBox(const TBox& box);
 	TBox(TBox& box);
+	TBox() = default;
 	void Print();
 	void Smaz();
 private:

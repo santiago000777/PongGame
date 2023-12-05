@@ -23,11 +23,11 @@ TBox::TBox(TBox& box) {
 }
 
 void TBox::Print() {
-	xy(pos);
+	xy({round(pos.x), round(pos.y)});
 	std::cout << znak;
 }
 
 void TBox::Smaz() {
-	xy(pos);
+	xy({ round(pos.x), round(pos.y) });
 	std::cout << ' ';
 }

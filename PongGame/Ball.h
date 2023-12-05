@@ -10,6 +10,7 @@ class TBall :
 public:
     TVector2 vec;
 public:
+    TBall(TVector2 pos, TVector2 vec, char znak);
     void NacteniPrekazek(TPaddle& paddle, std::vector<TWall>& walls);
     void Frame();
 private:
@@ -21,16 +22,8 @@ private:
 
     TVector2 kontrolniBody[3];
 
-    /*struct TPadlleInfo {
-        TVector2 pos;
-        int width;
-    } paddleInfo;
-
-    struct TWallInfo {
-        TVector2 pos, size;
-    };
-    std::vector<TWallInfo> wallsInfo;*/
-    std::vector<TBox&> prekazky;
+    
+    std::vector<TBox*> prekazky;
 
 private:
     void NastaveniKontrolnichBodu();

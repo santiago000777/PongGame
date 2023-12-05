@@ -19,3 +19,5 @@
 #include <random>
 #include <ctime>
 #include <map>
+
+#define DEBUG()	if(GetAsyncKeyState(VK_ESCAPE)) {__debugbreak();}
