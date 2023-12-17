@@ -11,7 +11,7 @@ TPaddle::TPaddle(TVector2 pos, int width, char znak)
 	this->iWidth = width;
 	this->cZnak = znak;
 	for(int i = 0; i < width; i++)
-		vBoxes.push_back({{pos.x + i, pos.y}, znak});
+		vBoxes.push_back({{pos.x + i, pos.y}, znak, false});
 }
 
 

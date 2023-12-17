@@ -13,13 +13,21 @@ TBox::TBox(TVector2 pos, char znak) {
 	this->znak = znak;
 }
 
+TBox::TBox(TVector2 pos, char znak, bool isDestoyble) {
+	this->pos = pos;
+	this->znak = znak;
+	this->isDestroyable = isDestoyble;
+}
+
 TBox::TBox(const TBox& box) {
 	this->pos = box.pos;
 	this->znak = box.znak;
+	this->isDestroyable = box.isDestroyable;
 }
 TBox::TBox(TBox& box) {
 	this->pos = box.pos;
 	this->znak = box.znak;
+	this->isDestroyable = box.isDestroyable;
 }
 
 void TBox::Print() {
