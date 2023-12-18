@@ -3,6 +3,7 @@
 #include "Wall.h"
 #include "Ball.h"
 
+
 void SetCursor(bool visible) {
 	CONSOLE_CURSOR_INFO info;
 	info.dwSize = 100;
@@ -30,7 +31,10 @@ int main() {
 	while (true) {
 		DEBUG();
 		paddle.Frame();
-		ball.Frame();
+		if (!ball.Frame()) {
+			return 0;
+		}
+		
 		Sleep(25);
 	}
 }

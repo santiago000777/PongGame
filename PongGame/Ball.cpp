@@ -20,10 +20,13 @@ void TBall::NacteniPrekazek(TPaddle& paddle, std::vector<TWall>& walls) {
 }
 
 
-void TBall::Frame() {
+bool TBall::Frame() {
 	Smaz();
 	NastaveniKontrolnichBodu();
 	Posun();
+	if (IsGameOver()) {
+		return 0;
+	}
 	Print();
 }
 
@@ -46,6 +49,8 @@ void TBall::Posun() {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
 			}
+			else
+				MakeSound(eSounds::COLLISION);
 		}
 		if (round(kontrolniBody[YSIDE].x) == prekazky.at(i)->pos.x 
 			&& round(kontrolniBody[YSIDE].y) == prekazky.at(i)->pos.y) {
@@ -55,6 +60,8 @@ void TBall::Posun() {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
 			}
+			else
+				MakeSound(eSounds::COLLISION);
 		}
 		/*if (round(kontrolniBody[CORNERSIDE].x) == prekazky.at(i)->pos.x
 			&& round(kontrolniBody[CORNERSIDE].y) == prekazky.at(i)->pos.y) {
@@ -63,4 +70,35 @@ void TBall::Posun() {
 		}*/
 	}
 	pos += vec;
+}
+
+void TBall::MakeSound(eSounds sound) {
+	switch (sound) {
+		case 0: {
+			Beep(490, 457);
+			break;
+		}
+		case 1: {
+			Beep(226, 80);
+			break;
+		}
+		case 2: {
+			Beep(600, 150);
+			Beep(500, 150);
+			Beep(400, 150);
+			Beep(200, 450);
+			break;
+		}
+		default:
+			break;
+	}
+}
+
+bool TBall::IsGameOver() {
+	if (this->pos.y > GAMEOVER_LINE) {
+		MakeSound(eSounds::GAMEOVER);
+		return true;
+	}
+	else
+		return false;
 }
