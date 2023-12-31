@@ -18,7 +18,7 @@ int main() {
 	walls.push_back({ {5, 3}, {40, 1}, '@' });
 	walls.push_back({ {44, 3}, {1, 30}, '@' });
 
-	TBall ball({20, 20}, {0.4f, 0.2f}, 'B');	// spatne odrazeni od vodorovnych zdi
+	TBall ball({20, 20}, {0.4f, 0.2f}, 'B');
 
 	ball.NacteniPrekazek(paddle, walls);
 	ball.Print();
@@ -34,7 +34,6 @@ int main() {
 		if (!ball.Frame()) {
 			return 0;
 		}
-		
 		Sleep(25);
 	}
 }

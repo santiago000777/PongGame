@@ -37,38 +37,46 @@ void TBall::NastaveniKontrolnichBodu() {
 }
 
 void TBall::Posun() {
-	for (int i = 0; i < prekazky.size(); i++) {
-		
-		
 
+	bool cornerColisionIsPossible = true;
+	for (int i = 0; i < prekazky.size(); i++) {
 		if (round(kontrolniBody[XSIDE].x) == prekazky.at(i)->pos.x 
 			&& round(kontrolniBody[XSIDE].y) == prekazky.at(i)->pos.y) {
 			vec.x *= -1;
-
+			cornerColisionIsPossible = false;
 			if (prekazky.at(i)->isDestroyable) {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
 			}
 			else
 				MakeSound(eSounds::COLLISION);
+			break;
 		}
 		if (round(kontrolniBody[YSIDE].x) == prekazky.at(i)->pos.x 
 			&& round(kontrolniBody[YSIDE].y) == prekazky.at(i)->pos.y) {
 			vec.y *= -1;
-
+			cornerColisionIsPossible = false;
 			if (prekazky.at(i)->isDestroyable) {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
 			}
 			else
 				MakeSound(eSounds::COLLISION);
+			break;
 		}
-		/*if (round(kontrolniBody[CORNERSIDE].x) == prekazky.at(i)->pos.x
-			&& round(kontrolniBody[CORNERSIDE].y) == prekazky.at(i)->pos.y) {
-			vec.x *= -1;
-			vec.y *= -1;
-		}*/
 	}
+
+	if (cornerColisionIsPossible) {
+		for (int i = 0; i < prekazky.size(); i++) {
+			if (round(kontrolniBody[CORNERSIDE].x) == prekazky.at(i)->pos.x
+				&& round(kontrolniBody[CORNERSIDE].y) == prekazky.at(i)->pos.y) {
+				vec.x *= -1;
+				vec.y *= -1;
+				break;
+			}
+		}
+	}
+
 	pos += vec;
 }
 
@@ -76,10 +84,12 @@ void TBall::MakeSound(eSounds sound) {
 	switch (sound) {
 		case 0: {
 			Beep(490, 457);
+
 			break;
 		}
 		case 1: {
 			Beep(226, 80);
+
 			break;
 		}
 		case 2: {
@@ -87,6 +97,7 @@ void TBall::MakeSound(eSounds sound) {
 			Beep(500, 150);
 			Beep(400, 150);
 			Beep(200, 450);
+
 			break;
 		}
 		default:
