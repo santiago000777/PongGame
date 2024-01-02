@@ -14,9 +14,10 @@ void SetCursor(bool visible) {
 int main() {
 	TPaddle paddle({20, 30}, 10, '#');
 	std::vector<TWall> walls;
-	walls.push_back({ {4, 3}, {1, 30}, '@' });
-	walls.push_back({ {5, 3}, {40, 1}, '@' });
-	walls.push_back({ {44, 3}, {1, 30}, '@' });
+	walls.push_back({ {4, 3}, {1, 30}, '@', false });
+	walls.push_back({ {5, 3}, {40, 1}, '@', false });
+	walls.push_back({ {44, 3}, {1, 30}, '@', false });
+	walls.push_back({ {10, 7}, {20, 1}, '%', true });	// error zniceni i zdi ktera by mena byt neznicitelna !!!
 
 	TBall ball({20, 20}, {0.4f, 0.2f}, 'B');
 

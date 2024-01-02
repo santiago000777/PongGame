@@ -47,6 +47,7 @@ void TBall::Posun() {
 			if (prekazky.at(i)->isDestroyable) {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
+				MakeSound(eSounds::SCORE);
 			}
 			else
 				MakeSound(eSounds::COLLISION);
@@ -59,6 +60,7 @@ void TBall::Posun() {
 			if (prekazky.at(i)->isDestroyable) {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
+				MakeSound(eSounds::SCORE);
 			}
 			else
 				MakeSound(eSounds::COLLISION);
@@ -72,6 +74,13 @@ void TBall::Posun() {
 				&& round(kontrolniBody[CORNERSIDE].y) == prekazky.at(i)->pos.y) {
 				vec.x *= -1;
 				vec.y *= -1;
+				if (prekazky.at(i)->isDestroyable) {
+					prekazky.at(i)->Smaz();
+					prekazky.erase(prekazky.begin() + i);
+					MakeSound(eSounds::SCORE);
+				}
+				else
+					MakeSound(eSounds::COLLISION);
 				break;
 			}
 		}
@@ -83,7 +92,7 @@ void TBall::Posun() {
 void TBall::MakeSound(eSounds sound) {
 	switch (sound) {
 		case 0: {
-			Beep(490, 457);
+			Beep(490, 157); // 457
 
 			break;
 		}

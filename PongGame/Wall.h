@@ -8,7 +8,7 @@ public:
 	TVector2 size;
 public:
 	TWall();
-	TWall(TVector2 pos, TVector2 size, char znak);
+	TWall(TVector2 pos, TVector2 size, char znak, bool destroyable);
 
 	void Print();
 	void Smaz();
