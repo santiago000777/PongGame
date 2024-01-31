@@ -3,7 +3,7 @@
 #include "Wall.h"
 #include "Paddle.h"
 
-#define GAMEOVER_LINE   30
+#define GAMEOVER_LINE   33
 
 
 class TBall :
@@ -32,7 +32,8 @@ private:
 
     
     std::vector<TBox*> prekazky;
-
+    
+    int score = 0;
 private:
     void NastaveniKontrolnichBodu();
     void Posun();

@@ -2,7 +2,7 @@
 #include "Paddle.h"
 #include "Wall.h"
 #include "Ball.h"
-
+#include "Time.h"
 
 void SetCursor(bool visible) {
 	CONSOLE_CURSOR_INFO info;
@@ -12,14 +12,15 @@ void SetCursor(bool visible) {
 }
 
 int main() {
-	TPaddle paddle({20, 30}, 10, '#');
+	TPaddle paddle({5, 33}, 10, '#');
 	std::vector<TWall> walls;
-	walls.push_back({ {4, 3}, {1, 30}, '@', false });
-	walls.push_back({ {5, 3}, {40, 1}, '@', false });
-	walls.push_back({ {44, 3}, {1, 30}, '@', false });
-	walls.push_back({ {10, 7}, {20, 1}, '%', true });	// error zniceni i zdi ktera by mena byt neznicitelna !!!
+	walls.push_back({ {4, 6}, {1, 30}, '@', false });
+	walls.push_back({ {5, 6}, {40, 1}, '@', false });
+	walls.push_back({ {44, 6}, {1, 30}, '@', false });
+	walls.push_back({ {9, 10}, {31, 1}, '%', true });
+	walls.push_back({ {9, 11}, {31, 1}, '%', true });
 
-	TBall ball({20, 20}, {0.4f, 0.2f}, 'B');
+	TBall ball({20, 25}, {0.07f, 0.2f}, 'B');
 
 	ball.NacteniPrekazek(paddle, walls);
 	ball.Print();
@@ -29,6 +30,7 @@ int main() {
 	paddle.ReadingWallInfo(walls);
 
 	SetCursor(false);
+	TTime timer;
 	while (true) {
 		DEBUG();
 		paddle.Frame();
@@ -36,5 +38,6 @@ int main() {
 			return 0;
 		}
 		Sleep(25);
+		timer.Frame();
 	}
 }

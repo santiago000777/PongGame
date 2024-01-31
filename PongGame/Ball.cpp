@@ -1,5 +1,7 @@
 #include "Ball.h"
 
+
+
 TBall::TBall(TVector2 pos, TVector2 vec, char znak) {
 	this->pos = pos;
 	this->vec = vec;
@@ -48,10 +50,10 @@ void TBall::Posun() {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
 				MakeSound(eSounds::SCORE);
+				score++;
 			}
 			else
 				MakeSound(eSounds::COLLISION);
-			break;
 		}
 		if (round(kontrolniBody[YSIDE].x) == prekazky.at(i)->pos.x 
 			&& round(kontrolniBody[YSIDE].y) == prekazky.at(i)->pos.y) {
@@ -61,10 +63,10 @@ void TBall::Posun() {
 				prekazky.at(i)->Smaz();
 				prekazky.erase(prekazky.begin() + i);
 				MakeSound(eSounds::SCORE);
+				score++;
 			}
 			else
 				MakeSound(eSounds::COLLISION);
-			break;
 		}
 	}
 
@@ -78,6 +80,7 @@ void TBall::Posun() {
 					prekazky.at(i)->Smaz();
 					prekazky.erase(prekazky.begin() + i);
 					MakeSound(eSounds::SCORE);
+					score++;
 				}
 				else
 					MakeSound(eSounds::COLLISION);
