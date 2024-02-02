@@ -12,5 +12,6 @@ public:
 	TVector2& operator-(TVector2& pos);
 	void operator+=(TVector2& pos);
 	void operator-=(TVector2& pos);
+	bool operator==(TVector2& pos);
 };
 

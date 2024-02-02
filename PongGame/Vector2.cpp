@@ -30,3 +30,11 @@ void TVector2::operator-=(TVector2& pos) {
 	this->x -= pos.x;
 	this->y -= pos.y;
 }
+
+bool TVector2::operator==(TVector2& pos) {
+	if (this->x == pos.x
+		&& this->y == pos.y)
+		return true;
+	else
+		return false;
+}

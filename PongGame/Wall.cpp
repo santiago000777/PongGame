@@ -4,12 +4,12 @@ TWall::TWall() {
 
 }
 
-TWall::TWall(TVector2 pos, TVector2 size, char znak, bool destroyable) {
+TWall::TWall(TVector2 pos, TVector2 size, char znak, bool destroyable, int color) {
 	this->pos = pos;
 	this->size = size;
 	for (int y = 0; y < size.y; y++) {
 		for (int x = 0; x < size.x; x++) {
-			boxes.push_back({ { pos.x + x, pos.y + y }, znak, destroyable });
+			boxes.push_back({ { pos.x + x, pos.y + y }, znak, destroyable, color });
 		}
 	}
 }

@@ -40,7 +40,8 @@ void TBall::NastaveniKontrolnichBodu() {
 
 void TBall::Posun() {
 
-	bool cornerColisionIsPossible = true;
+	bool cornerColisionIsPossible = true;			// funguje protoze po kazdem posunuti se ma odrazit, pokud muze, jen jednou
+
 	for (int i = 0; i < prekazky.size(); i++) {
 		if (round(kontrolniBody[XSIDE].x) == prekazky.at(i)->pos.x 
 			&& round(kontrolniBody[XSIDE].y) == prekazky.at(i)->pos.y) {

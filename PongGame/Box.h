@@ -7,10 +7,11 @@ class TBox {
 public:
 	TVector2 pos;
 	char znak;
+	int color;
 	bool isDestroyable;
 public:
 	TBox(TVector2 pos, char znak);
-	TBox(TVector2 pos, char znak, bool isDestoyble);
+	TBox(TVector2 pos, char znak, bool isDestoyble, int color);
 	TBox(const TBox& box);
 	TBox(TBox& box);
 	TBox() = default;

@@ -5,13 +5,13 @@ TPaddle::TPaddle() {
 
 }
 
-TPaddle::TPaddle(TVector2 pos, int width, char znak) 
+TPaddle::TPaddle(TVector2 pos, int width, char znak, int color) 
 	: pos(pos) {
 
 	this->iWidth = width;
 	this->cZnak = znak;
 	for(int i = 0; i < width; i++)
-		vBoxes.push_back({{pos.x + i, pos.y}, znak, false});
+		vBoxes.push_back({{pos.x + i, pos.y}, znak, false, color});
 }
 
 

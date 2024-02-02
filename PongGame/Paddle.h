@@ -7,9 +7,10 @@ public:
     TVector2 pos, vec;
     int iWidth;
     std::vector<TBox> vBoxes;
+    int color;
 public:
     TPaddle();
-    TPaddle(TVector2 pos, int width, char znak);
+    TPaddle(TVector2 pos, int width, char znak, int color = 15);
 
     void Frame();
 

@@ -13,10 +13,11 @@ TBox::TBox(TVector2 pos, char znak) {
 	this->znak = znak;
 }
 
-TBox::TBox(TVector2 pos, char znak, bool isDestoyble) {
+TBox::TBox(TVector2 pos, char znak, bool isDestoyble, int color = 15) {
 	this->pos = pos;
 	this->znak = znak;
 	this->isDestroyable = isDestoyble;
+	this->color = color;
 }
 
 TBox::TBox(const TBox& box) {
