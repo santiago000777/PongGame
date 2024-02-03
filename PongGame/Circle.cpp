@@ -51,11 +51,16 @@ void TCircle::Frame() {
 	NastaveniKontrolnichBodu();
 	Posun();
 	Decalculate();
-	Calculate();
+	//Calculate();	// musi byt volany jen v main()
 	Print();
 	
 }
-
+/*Smaz();
+	NastaveniKontrolnichBodu();
+	Posun();
+	Decalculate();
+	Calculate();
+	Print();*/
 
 void TCircle::Calculate() {
 	TVector2 pos;
@@ -96,12 +101,15 @@ void TCircle::Calculate() {
 	}
 }
 
+
+
 void TCircle::Decalculate() {
-	positions.clear();
+	//positions.clear();
+	kontrolniBody.clear();
 }
 
 void TCircle::NastaveniKontrolnichBodu() {
-	for (int i = 0; i < positions.size(); i++) {
+	/*for (int i = 0; i < positions.size(); i++) {
 		if (vec.x > 0 && fabsf(positions.at(i).pos.x - this->pos.x) == radius) {
 			kontrolniBody[eKontrolniBody::XSIDE].push_back({ positions.at(i).pos.x + vec.x, positions.at(i).pos.y });
 		}
@@ -116,14 +124,38 @@ void TCircle::NastaveniKontrolnichBodu() {
 		}
 		else if (vec.y < 0 && fabsf(positions.at(i).pos.y - this->pos.y) == radius)
 			kontrolniBody[eKontrolniBody::YSIDE].push_back({ positions.at(i).pos.x, positions.at(i).pos.y + vec.y });
+	}*/
+
+
+	for (int i = 0; i < positions.size(); i++) {
+		float pom = sqrtf(powf(fabsf(this->pos.x - (positions.at(i).pos.x + vec.x)), 2.0f) + powf(fabsf(this->pos.y - (positions.at(i).pos.y + vec.y)), 2.0f));
+		if (pom >= this->radius) {							// chyba (i = 13, 15)
+			kontrolniBody.push_back(positions.at(i).pos + vec);
+		}
 	}
-	
+
+	/*for (int i = 0; i < kontrolniBody.size(); i++) {
+		xy({roundf(kontrolniBody.at(i).x), roundf(kontrolniBody.at(i).y)});
+		std::cout << 7;
+	}*/
 			// na roh !!!
 }
 
 void TCircle::Posun() {
 		// Neodrazi se (nenastavi se kontrolni body)
+	int count = 0;
 	for (int k = 0; k < prekazky.size(); k++) {
+		for (int i = 0; i < kontrolniBody.size(); i++) {
+			if (roundf(prekazky.at(k)->pos.x) == roundf(kontrolniBody.at(i).x)
+				&& roundf(prekazky.at(k)->pos.y) == roundf(kontrolniBody.at(i).y)) {
+				if(count == 0)
+					vec.y *= -1;
+				count++;
+				prekazky.at(k)->Smaz();
+			}
+		}
+	}
+	/*for (int k = 0; k < prekazky.size(); k++) {
 		for (int i = 0; i < kontrolniBody[eKontrolniBody::XSIDE].size(); i++) {
 			if (prekazky.at(k)->pos == kontrolniBody[eKontrolniBody::XSIDE].at(i)) {
 				vec.x *= -1;
@@ -135,6 +167,8 @@ void TCircle::Posun() {
 				vec.y *= -1;
 			}
 		}
+	}*/
+	for (int i = 0; i < positions.size(); i++) {
+		positions.at(i).pos += vec;
 	}
-	pos += vec;
 }

@@ -21,9 +21,10 @@ int main() {
 	walls.push_back({ {9, 10}, {31, 1}, '%', true });
 	walls.push_back({ {9, 11}, {31, 1}, '%', true });
 
-	TCircle ball({ 20, 25 }, { 0.07f, 0.2f }, 3.0f, 'B');
+	TCircle ball({ 20, 25 }, { 0.1f, -0.2f }, 3.0f, 'B');
 
 	ball.NacteniPrekazek(paddle, walls);
+	ball.Calculate();
 	ball.Print();
 	for(int i = 0; i < walls.size(); i++)
 		walls.at(i).Print();

@@ -14,11 +14,11 @@ public:
 	char znak;
 	bool isDestroyable;
 
-	enum eKontrolniBody : int {
+	/*enum eKontrolniBody : int {
 		XSIDE = 0,
 		YSIDE,
 		CORNERSIDE
-	};
+	};*/
 
 
 public:
@@ -30,15 +30,15 @@ public:
 	void Print();
 	void Smaz();
 	void Frame();
+	void Calculate();
 
 
 private:
 	std::vector<TBox> positions;
-	std::vector<TVector2> kontrolniBody[3];
+	std::vector<TVector2> kontrolniBody;
 	std::vector<TBox*> prekazky;
 
 private:
-	void Calculate();
 	void Decalculate();
 	void NastaveniKontrolnichBodu();
 	void Posun();
