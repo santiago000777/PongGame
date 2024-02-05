@@ -31,6 +31,7 @@ public:
 	void Smaz();
 	void Frame();
 	void Calculate();
+	void NastaveniKontrolnichBodu();
 
 
 private:
@@ -40,7 +41,7 @@ private:
 
 private:
 	void Decalculate();
-	void NastaveniKontrolnichBodu();
 	void Posun();
+	void NastaveniVektoru();
 };
 

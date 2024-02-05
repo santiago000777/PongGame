@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <locale.h>
-//#include <chrono>
 #include <thread>
 #include <cstdlib>
 #include <cstring>
@@ -21,3 +20,4 @@
 #include <map>
 
 #define DEBUG()	if(GetAsyncKeyState(VK_ESCAPE)) {__debugbreak();}
+#define PI		3.14159265359

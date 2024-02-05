@@ -12,8 +12,9 @@ void SetCursor(bool visible) {
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
 }
 
-int main() {
-	TPaddle paddle({5, 33}, 10, '#');
+int main() {		// chyba 
+
+	TPaddle paddle({33, 33}, 10, '#');
 	std::vector<TWall> walls;
 	walls.push_back({ {4, 6}, {1, 30}, '@', false });
 	walls.push_back({ {5, 6}, {40, 1}, '@', false });
@@ -21,10 +22,11 @@ int main() {
 	walls.push_back({ {9, 10}, {31, 1}, '%', true });
 	walls.push_back({ {9, 11}, {31, 1}, '%', true });
 
-	TCircle ball({ 20, 25 }, { 0.1f, -0.2f }, 3.0f, 'B');
+	TCircle ball({ 30, 27 }, { 0.1f, 0.2f }, 2.0f, 'B');
 
 	ball.NacteniPrekazek(paddle, walls);
 	ball.Calculate();
+	ball.NastaveniKontrolnichBodu();
 	ball.Print();
 	for(int i = 0; i < walls.size(); i++)
 		walls.at(i).Print();
